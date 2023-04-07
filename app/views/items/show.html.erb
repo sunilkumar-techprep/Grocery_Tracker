@@ -1,0 +1,176 @@
+<div>
+  <div>
+    <h1>
+      Item #<%= @the_item.id %> details
+    </h1>
+
+    <div>
+      <div>
+        <a href="/items">
+          Go back
+        </a>
+      </div>
+
+      <div>
+        <a href="/delete_item/<%= @the_item.id %>">
+          Delete item
+        </a>
+      </div>
+    </div>
+
+    <dl>
+      <dt>
+        Name
+      </dt>
+      <dd>
+        <%= @the_item.name %>
+      </dd>
+
+      <dt>
+        Purchase date
+      </dt>
+      <dd>
+        <%= @the_item.purchase_date %>
+      </dd>
+
+      <dt>
+        Expiration date
+      </dt>
+      <dd>
+        <%= @the_item.expiration_date %>
+      </dd>
+
+      <dt>
+        Quantity
+      </dt>
+      <dd>
+        <%= @the_item.quantity %>
+      </dd>
+
+      <dt>
+        Description
+      </dt>
+      <dd>
+        <%= @the_item.description %>
+      </dd>
+
+      <dt>
+        Image
+      </dt>
+      <dd>
+        <%= @the_item.image %>
+      </dd>
+
+      <dt>
+        Location
+      </dt>
+      <dd>
+        <%= @the_item.location %>
+      </dd>
+
+      <dt>
+        Category
+      </dt>
+      <dd>
+        <%= @the_item.category_id %>
+      </dd>
+
+      <dt>
+        Created at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_item.created_at) %> ago
+      </dd>
+
+      <dt>
+        Updated at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_item.updated_at) %> ago
+      </dd>
+    </dl>
+  </div>
+</div>
+
+<hr>
+
+
+<div>
+  <div>
+    <h2>
+      Edit item
+    </h2>
+
+    <form action="/modify_item/<%= @the_item.id %>"  method="post" >
+      <div>
+        <label for="name_box">
+          Name
+        </label>
+
+        <input type="text" id="name_box" name="query_name" value="<%= @the_item.name %>">
+      </div>
+
+      <div>
+        <label for="purchase_date_box">
+          Purchase date
+        </label>
+
+        <input type="date" id="purchase_date_box" name="query_purchase_date" value="<%= @the_item.purchase_date %>">
+      </div>
+
+      <div>
+        <label for="expiration_date_box">
+          Expiration date
+        </label>
+
+        <input type="date" id="expiration_date_box" name="query_expiration_date" value="<%= @the_item.expiration_date %>">
+      </div>
+
+      <div>
+        <label for="quantity_box">
+          Quantity
+        </label>
+
+        <input type="text" id="quantity_box" name="query_quantity" value="<%= @the_item.quantity %>">
+      </div>
+
+      <div>
+        <label for="description_box">
+          Description
+        </label>
+
+        <textarea id="description_box" name="query_description"><%= @the_item.description %></textarea>
+      </div>
+
+      <div>
+        <label for="image_box">
+          Image
+        </label>
+
+        <input type="text" id="image_box" name="query_image" value="<%= @the_item.image %>">
+      </div>
+
+      <div>
+        <label for="location_box">
+          Location
+        </label>
+
+        <input type="text" id="location_box" name="query_location" value="<%= @the_item.location %>">
+      </div>
+
+      <div>
+        <label for="category_id_box">
+          Category
+        </label>
+
+        <input type="text" id="category_id_box" name="query_category_id" value="<%= @the_item.category_id %>">
+      </div>
+
+      <button>
+        Update item
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>
