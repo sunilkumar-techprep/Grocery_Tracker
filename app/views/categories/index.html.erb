@@ -1,86 +1,31 @@
-<div>
-  <div>
-    <h1>
-      List of all categories
-    </h1>
-  </div>
-</div>
-
-<hr>
 
 <div>
-  <div>
+
     <h2>
-      Add a new category
+      Show all available item  by categories
     </h2>
-
-    <form action="/insert_category" method="post">
-      <div>
-        <label for="name_box">
-          Name
-        </label>
-
-        <input type="text" id="name_box" name="query_name">
+    
+    <div>
+        <form action="/category_item" method="get">
+        <label for="query_category">Choose a Category:</label>
+<select name="query_category" id="query_category">
+  <option value="Produce">Produce</option>
+  <option value="Frozen">Frozen</option>
+  <option value="Drinks" >Drinks</option>
+  <option value="Condiments">Condiments</option>
+  <option value="Fruits">Fruits</option>
+  <option value="Snacks">Snacks</option>
+  <option value="Backing/Spices" >Baking/Spices</option>
+  <option value="Bread/Grains">Bread/Grains</option>
+  <option value="Dairy">Dairy</option>
+  <option value="For the Home">For the Home</option>
+  <option value="Toiletries">Toiletries</option>
+</select>
       </div>
 
-      <button>
-        Create category
-      </button>
-    </form>
-  </div>
-</div>
-
-<hr>
-<div>
-  <div>
-    <table border="1">
-      <tr>
-        <th>
-          ID
-        </th>
-
-        <th>
-          Name
-        </th>
-
-        <th>
-          Created at
-        </th>
-
-        <th>
-          Updated at
-        </th>
-
-        <th>
-        </th>
-      </tr>
-
-      <% @list_of_categories.each do |a_category| %>
-      <tr>
-        <td>
-          <%= a_category.id %>
-        </td>
-
-        <td>
-          <%= a_category.name %>
-        </td>
-
-        <td>
-          <%= time_ago_in_words(a_category.created_at) %> ago
-        </td>
-        <td>
-          <%= time_ago_in_words(a_category.updated_at) %> ago
-        </td>
-
-        <td>
-          <a href="/categories/<%= a_category.id %>">
-            Show details
-          </a>
-        </td>
-      </tr>
-      <% end %>
-    </table>
-  </div>
-</div>
-
-<hr>
+        <button>
+          Submit
+        </button>
+       </form>
+        <hr>
+   

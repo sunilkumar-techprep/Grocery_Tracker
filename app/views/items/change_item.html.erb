@@ -1,0 +1,78 @@
+<div>
+  <div>
+    <h2>
+      Edit item
+    </h2>
+  
+      <div>
+        <label for="name_box" >
+         Name of Item
+        </label>
+
+        <input type="text" id="name_box" name="query_name" value="<%= @the_item.name %>" >
+      </div>
+
+      <div>
+        <label for="purchase_date_box">
+          Purchase date
+        </label>
+
+        <input type="date" id="purchase_date_box" name="query_purchase_date" value="<%= @the_item.purchase_date %>">
+      </div>
+
+      <div>
+        <label for="expiration_date_box">
+          Expiration date
+        </label>
+
+        <input type="date" id="expiration_date_box" name="query_expiration_date" value="<%= @the_item.expiration_date %>">
+      </div>
+
+      <div>
+        <label for="quantity_box">
+          Quantity
+        </label>
+
+        <input type="text" id="quantity_box" name="query_quantity" value="<%= @the_item.quantity %>">
+      </div>
+
+      <div>
+        <label for="description_box">
+          Description
+        </label>
+
+        <textarea id="description_box" name="query_description"><%= @the_item.description %></textarea>
+      </div>
+
+      <div>
+        <label for="image_box">
+          Image
+        </label>
+
+        <input type="text" id="image_box" name="query_image" value="<%= @the_item.image %>">
+      </div>
+
+      <div>
+        <label for="location_box">
+          Location
+        </label>
+
+        <input type="text" id="location_box" name="query_location" value="<%= @the_item.location %>" >
+      </div>
+
+      <div>
+        <label for="category_id_box">
+          Category
+        </label>
+
+        <input type="text" id="category_id_box" name="query_category" value="<%= @the_item.category%>">
+      </div>
+
+      <button>
+        Update item
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>

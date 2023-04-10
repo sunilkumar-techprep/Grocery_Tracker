@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-
+  get("/", { :controller => "items", :action => "homepage" })
 
   # Routes for the Item resource:
 
@@ -66,5 +66,13 @@ Rails.application.routes.draw do
   get("/user_sign_out", { :controller => "user_authentication", :action => "destroy_cookies" })
              
   #------------------------------
+  post("/find_item",{:controller => "items", :action=>"find_item"})
 
+
+  get("/category_item", { :controller => "categories", :action => "display" })
+
+  get("/search", { :controller => "items", :action => "search" })
+  get("/itemlist", { :controller => "items", :action => "item_by_name" })
+  get("/change_item/:path_id", { :controller => "items", :action => "change_item" })
+  get("/All_items", { :controller => "items", :action => "allitems" })
 end

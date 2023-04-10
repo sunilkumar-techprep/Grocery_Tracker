@@ -51,4 +51,18 @@ class CategoriesController < ApplicationController
 
     redirect_to("/categories", { :notice => "Category deleted successfully."} )
   end
+  def display
+    @selected_category = params[:query_category]
+    @list_of_items = Item.where(category: @selected_category)
+  
+    if @list_of_items.empty?
+      render({ template: "items/no_matching_items.html.erb" })
+    else
+      render({ template: "items/displayitem.html.erb" })
+    end
+      #render({ template: "items/displayitem.html.erb" })
+    
+    end
+
+
 end

@@ -1,10 +1,138 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <style>
+
+    .container {
+    margin-left: 20px; /* set left margin */
+  }
+
+  /* center the form within the container */
+  .row {
+    display: flex;
+    justify-content: center;
+  }
+
+  /* style the update button */
+  .btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+    font-size: 16px;
+    font-weight: 500;
+  }
+
+  .btn-primary:hover {
+    background-color: #0069d9;
+    border-color: #0062cc;
+  }
+    .btn-group a {
+  text-decoration: none;
+  font: 20px;}
+
+.btn-group button {
+  margin: 10px;
+  
+  padding: 3rem;
+  font-size: 3rem;
+  font-weight: bold;
+  display: block;
+  display: flex;
+  justify-content: center;
+  width: 50%; 
+  margin: 0 auto;}
+
+.search-container {
+  text-align: center;}
+
+.search-label {
+  font-weight: bold;
+  display: block;
+  margin-bottom: 10px;}
+
+.abc {
+  text-align: center;
+  margin-top: 20px;
+  font:bold;
+
+}
+h1 {
+  font-family: "Montserrat", sans-serif;
+  font-size: 36px;
+  font-weight: 700;
+  color:purple;
+  text-align: center;
+  margin-top: 10px;
+
+}
+.search-description {
+  font-size: 20px;
+  color:green;
+}
+.search-container {
+  display: flex;
+  justify-content: center;
+}
+
+.search-container button {
+  margin: 10px;
+  font-size: 18px;
+  padding: 10px 20px;
+}
+
+
+button {
+  width: 150px;
+  height: 50px;
+  display: block;
+  margin-bottom: 10px;
+  display: block;
+ 
+  margin: 10px auto;
+}
+table {
+  width: 95%;
+  margin: 20px auto;
+  margin-top:15px; /* add 40px space between the navbar and the table */
+  
+}
+
+td, th {
+  border: 3px solid #ccc;
+  padding: 10px;
+  text-align: center;
+}  
+.robo-image {
+    max-width: 50%;
+    height: auto;
+  }  
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/js/all.min.js"></script>
+  </head>
+
+  <body>
+
+<nav class="navbar navbar-dark bg-primary">
+    <div class="container"  margin-left: 120px>
+    <a  class="navbar-brand" class="navbar-nav" href="/">Home</a>
+    <a  class="navbar-brand" class="navbar-nav" href="/items">Add Items</a>
+    <!--a  class="navbar-brand" class="navbar-nav" href="/search">Search Items</a-->
+    <a  class="navbar-brand" class="navbar-nav" href="/itemlist">Find Items </a>
+    <a  class="navbar-brand" class="navbar-nav" href="/itemlist">Search Item By Item name</a>
+    <a  class="navbar-brand" class="navbar-nav" href="/categories_item">Search Item By Categories</a>
+    <a  class="navbar-brand" class="navbar-nav" href="/"> Search Item By Location</a>
+    </div>
+    </div>
+  </nav>
 <div>
   <div>
     <h1>
-      Item #<%= @the_item.id %> details
+      Item <% @the_item.name %> details
     </h1>
 
-    <div>
+    <!--div>
       <div>
         <a href="/items">
           Go back
@@ -16,11 +144,249 @@
           Delete item
         </a>
       </div>
-    </div>
+    </div-->
+    <div style="margin-top: 10px;">
+  <div>
+    <table border="1">
+      <tr>
+        <th>
+          ID
+        </th>
 
-    <dl>
+        <th>
+          Item Name
+        </th>
+
+        <th>
+          Purchase date
+        </th>
+
+        <th>
+          Expiration date
+        </th>
+
+        <th>
+          Quantity
+        </th>
+
+        <th>
+          Description
+        </th>
+
+        <th>
+          Image
+        </th>
+
+        <th>
+          Location
+        </th>
+
+        <th>
+          Category
+        </th>
+
+        <th>
+          Created at
+        </th>
+
+        <th>
+          Updated at
+        </th>
+
+        <th>Details
+        </th>
+      </tr>
+      
+      <tbody>
+  
+  
+  <!--% @list_of_items.each do |an_item| %-->
+  <tr>
+    <td>
+      <%= @the_item.id %>
+    </td>
+
+    <td>
+      <%= @the_item.name %>
+    </td>
+
+    <td>
+      <%= @the_item.purchase_date %>
+    </td>
+
+    <td>
+      <%= @the_item.expiration_date %>
+    </td>
+
+    <td>
+      <%= @the_item.quantity %>
+    </td>
+
+    <td>
+      <%= @the_item.description %>
+    </td>
+
+    <td>
+      <img src ="https://robohash.org/<%= @the_item.image %>" class="robo-image">
+    </td>
+
+    <td>
+      <%= @the_item.location %>
+    </td>
+
+    <td>
+      <%= @the_item.category %>
+    </td>
+
+    <td>
+      <%= time_ago_in_words(@the_item.created_at) %> ago
+    </td>
+
+    <td>
+      <%= time_ago_in_words(@the_item.updated_at) %> ago
+    </td>
+
+    <td>
+
+   <% @diff =(@the_item.expiration_date - @the_item.purchase_date).to_i%>
+    <% if @diff < 7 %>
+     <div id="fresh-until" style="color: red;">
+    Fresh until <%= @diff %> days
+     </div>
+    <% else %>
+     <div id="fresh-until" style="color: black;">
+    Fresh until <%= @diff %> days
+     </div>
+    <% end %>
+     <!--td>
+      <a href="/items/<%= @the_item.id %>">
+        Show details
+      </a>
+    </td-->
+  </tr>
+  
+<!--% end %-->
+</table>
+
+
+<hr>
+<div class="search-container">
+    
+
+
+
+  <button type="button" class="btn btn-danger">
+  <a href="/delete_item/<%= @the_item.id %>" method="post" style="text-decoration:none; color:inherit;">Delete Item</a>
+   </button>
+
+
+ <hr>
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 offset-md-3">
+    <h2>
+      Edit item
+    </h2>
+
+    <form action="/modify_item/<%= @the_item.id %>"  method="post" >
+      <!--div  class="col-sm-6">
+        <label for="name_box">
+          Name
+        </label_-->
+       <!--input type="password" class="form-control" id="inputPassword2" placeholder="Password"-->
+        <!--input type="text" id="name_box" name="query_name" value="<%= @the_item.name %>"-->
+         <!--input type="text"  class="form-control " id="name_box" name="query_name" value="<%= @the_item.name %>" placeholder="Enter Item Name">
+      </div--><table>
+      <tr>
+<div class="form-group row form-inline">
+  <label for="name_box" class="col-sm-3 col-form-label">Name</label>
+  <div class="col-sm-6">
+    <input type="text" class="form-control" id="name_box" name="query_name" value="<%= @the_item.name %>" placeholder="Enter Item Name" style="margin-top: 5px;">
+  </div>
+</div>
+
+</tr>
+<tr>
+      <div class="form-group row form-inline">
+        <label for="purchase_date_box"class="col-sm-3 col-form-label"> Purchase date </label>
+      <div class="col-sm-6">
+        <input type="date"  class="form-control" id="purchase_date_box" name="query_purchase_date" value="<%= @the_item.purchase_date %>"  style="margin-top: 5px;">
+      </div>
+</tr>
+<tr>
+      <div class="form-group row form-inline" >
+        <label for="expiration_date_box"class="col-sm-3 col-form-label" >Expiration date </label>
+        <div class="col-sm-6">
+        <input type="date"  class="form-control" id="expiration_date_box" name="query_expiration_date" value="<%= @the_item.expiration_date %>" style="margin-top: 5px;">
+      </div>
+</tr>
+<tr>
+      <div class="form-group row form-inline">
+        <label for="quantity_box" class="col-sm-3 col-form-label" > Quantity</label>
+         <div class="col-sm-6">
+        <input type="text"  class="form-control" id="quantity_box" name="query_quantity" value="<%= @the_item.quantity %>" style="margin-top: 5px;"placeholder="Enter Quantity of Item">
+      </div>
+</tr>
+<tr>
+      <div class="form-group row form-inline" >
+        <label for="description_box" class="col-sm-3 col-form-label">Description </label>
+        <div class="col-sm-6">
+        <textarea id="description_box" class="form-control" name="query_description" style="margin-top: 5px;"placeholder="Enter Description of  Item" rows="1" ><%= @the_item.description %></textarea>
+      </div>
+</tr>
+<tr>
+      <div class="form-group row form-inline" >
+        <label for="image_box" class="col-sm-3 col-form-label">Image</label>
+      <div class="col-sm-6">
+     <input type="text" class="form-control" id="image_box" name="query_image" value="<%= @the_item.image %>"style="margin-top: 5px;"placeholder="Enter Image URL">
+      </div>
+</tr>
+<tr>
+      <div class="form-group row form-inline">
+        <label for="location_box"class="col-sm-3 col-form-label" >Location</label>
+         <div class="col-sm-6">   
+        <input type="text"class="form-control" id="location_box" name="query_location" value="<%= @the_item.location %>"style="margin-top: 5px;"placeholder="Enter Location of Item">
+      </div>
+</tr>
+<tr>
+      <div class="form-group row form-inline">
+        <label for="category_id_box"class="col-sm-3 col-form-label" >Category</label>
+         <div class="col-sm-6">
+         <select name="query_category" id="query_category" class="form-control" >
+  <option value="produce">Produce</option>
+  <option value="frozen">Frozen</option>
+  <option value="beverages" selected ="<%= @the_item.category %>">Drinks</option>
+  <option value="condiments">Condiments</option>
+  <option value="fruits">Fruits</option>
+  <option value="snacks">Snacks</option>
+  <option value="backing/spices" >Baking/Spices</option>
+  <option value="bread/grains">Bread/Grains</option>
+  <option value="dairy">Dairy</option>
+  <option value="home">For the Home</option>
+  <option value="toiletries">Toiletries</option>
+</select>
+        
+      </div>
+</tr><tr>
+      <div class="form-group">
+          <button type="submit" class="btn btn-primary btn-block">Update item</button>
+        </div></tr>
+    </form>
+  </div>
+</div>
+</div>
+
+ <!--button type="button" class="btn btn-info">
+  <a href ="/change_item/<%= @the_item.id %>" style="text-decoration:none; color:inherit;" method="post">
+  Edit Item</button-->
+<!--button type="button" class="btn btn-danger"><a href="/delete_item/<%= @the_item.id %>">Delete Item</button-->
+ <!--button type="button" class="btn btn-secondary">Location</button-->
+
+    <!--dl>
       <dt>
-        Name
+       Item Name
       </dt>
       <dd>
         <%= @the_item.name %>
@@ -72,7 +438,7 @@
         Category
       </dt>
       <dd>
-        <%= @the_item.category_id %>
+        <%= @the_item.category %>
       </dd>
 
       <dt>
@@ -92,85 +458,17 @@
   </div>
 </div>
 
-<hr>
+<hr-->
+<!--label for="search-by">Search by:</label-->
 
-
-<div>
-  <div>
-    <h2>
-      Edit item
-    </h2>
-
-    <form action="/modify_item/<%= @the_item.id %>"  method="post" >
-      <div>
+ 
+     <!--div>
         <label for="name_box">
           Name
         </label>
+<input type="text"  class="form-control" id="category_id_box" name="query_category" value="<%= @the_item.category%>"style="margin-top: 5px;"placeholder="Select Category of Item" >
+        <input type="hidden" id="name_box" name="query_name" value="<%= @the_item.name %>">
+      </div-->
+    <!--a href="/modify_item/<%= @the_item.id %>" style="text-decoration:none; color:inherit;"-->
 
-        <input type="text" id="name_box" name="query_name" value="<%= @the_item.name %>">
-      </div>
-
-      <div>
-        <label for="purchase_date_box">
-          Purchase date
-        </label>
-
-        <input type="date" id="purchase_date_box" name="query_purchase_date" value="<%= @the_item.purchase_date %>">
-      </div>
-
-      <div>
-        <label for="expiration_date_box">
-          Expiration date
-        </label>
-
-        <input type="date" id="expiration_date_box" name="query_expiration_date" value="<%= @the_item.expiration_date %>">
-      </div>
-
-      <div>
-        <label for="quantity_box">
-          Quantity
-        </label>
-
-        <input type="text" id="quantity_box" name="query_quantity" value="<%= @the_item.quantity %>">
-      </div>
-
-      <div>
-        <label for="description_box">
-          Description
-        </label>
-
-        <textarea id="description_box" name="query_description"><%= @the_item.description %></textarea>
-      </div>
-
-      <div>
-        <label for="image_box">
-          Image
-        </label>
-
-        <input type="text" id="image_box" name="query_image" value="<%= @the_item.image %>">
-      </div>
-
-      <div>
-        <label for="location_box">
-          Location
-        </label>
-
-        <input type="text" id="location_box" name="query_location" value="<%= @the_item.location %>">
-      </div>
-
-      <div>
-        <label for="category_id_box">
-          Category
-        </label>
-
-        <input type="text" id="category_id_box" name="query_category_id" value="<%= @the_item.category_id %>">
-      </div>
-
-      <button>
-        Update item
-      </button>
-    </form>
-  </div>
-</div>
-
-<hr>
+  

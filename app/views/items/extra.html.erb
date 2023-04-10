@@ -1,0 +1,134 @@
+the_name = params.fetch("query_name")
+    matching_items= Item.where({:name=> the_name})
+    @an_item = matching_items.all
+<div>
+  <div>
+    <table border="1">
+      <tr>
+        <th>
+          ID
+        </th>
+
+        <th>
+          Name
+        </th>
+
+        <th>
+          Purchase date
+        </th>
+
+        <th>
+          Expiration date
+        </th>
+
+        <th>
+          Quantity
+        </th>
+
+        <th>
+          Description
+        </th>
+
+        <th>
+          Image
+        </th>
+
+        <th>
+          Location
+        </th>
+
+        <th>
+          Category
+        </th>
+
+        <th>
+          Created at
+        </th>
+
+        <th>
+          Updated at
+        </th>
+
+        <th>Details
+        </th>
+      </tr>
+      
+      <!--% @the_item.each do |an_item| %-->
+      <tr-->
+        <td>
+          <%= @an_item.id %>
+        </td>
+
+        <td>
+          <%= @an_item.name %>
+        </td>
+
+        <td>
+          <%= @an_item.purchase_date %>
+        </td>
+
+        <td>
+          <%= @an_item.expiration_date %>
+        </td>
+
+        <td>
+          <%= @an_item.quantity %>
+        </td>
+
+        <td>
+          <%= @an_item.description %>
+        </td>
+
+        <td>
+          <%= @an_item.image %>
+        </td>
+
+        <td>
+          <%= @an_item.location %>
+        </td>
+
+        <td>
+          <%= @an_item.category %>
+        </td>
+
+        <td>
+          <%= time_ago_in_words(@an_item.created_at) %> ago
+        </td>
+        <td>
+          <%= time_ago_in_words(@an_item.updated_at) %> ago
+        </td>
+
+        <td>
+          <a href="/items/<%= @an_item.id %>">
+            Show details
+          </a>
+        </td>
+      </tr>
+      <!--% end %-->
+    </table>
+  </div>
+</div>
+
+<hr>
+
+
+def find_item
+  input_string = params.fetch("query_name").downcase
+  input_array = input_string.split(",").map { |s| s.gsub(/[^a-zA-Z\s]/, "").strip }
+
+  # build the SQL LIKE condition using OR
+  conditions = input_array.map { |input| "LOWER(name) LIKE ?" }
+  sql_condition = conditions.join(" OR ")
+  sql_params = input_array.map { |input| "%#{input}%" }
+
+  matching_items = Item.where(sql_condition, *sql_params)
+
+  if matching_items.empty?
+    new_item = Item.new(name: input_string,id:"",purchase_date: "", expiration_date: "", quantity: "", description: "", image: "", location: "", category: "")
+    @list_of_items = [new_item]
+  else
+    @list_of_items = matching_items
+  end
+
+  render({ :template => "items/finditem.html.erb" })
+end
