@@ -89,8 +89,8 @@ td, th {
 <hr>
 <div class="container">
   <h2>Add a new item to grocery list</h2>
-
-  <form action="/insert_item" method="post">
+<form action="/insert_item" method="post">
+  <!--form action="/insert_item" method="post" class="form-horizontal" enctype="multipart/form-data"-->
     <table>
   <tr>
      <div class="form-group row form-inline">
@@ -151,6 +151,8 @@ td, th {
     
         <label for="image_box" class="col-sm-3 col-form-label">Image</label>
       <div class="col-sm-6">
+      <!--input type="file" id="image" name="image" class="form-control"-->
+      <!--input type="file" id="image_box" name="image" class="form-control"-->
       
         <input type="text" id="image_box" name="query_image" class="form-control" style="margin-top: 5px;">
       </div>
@@ -175,7 +177,7 @@ td, th {
         <select name="query_category" id="query_category"class="form-control" >
           <option value="produce">Produce</option>
           <option value="frozen">Frozen</option>
-          <option value="beverages" selected>Drinks</option>
+          <option value="beverages">Drinks</option>
           <option value="condiments">Condiments</option>
           <option value="fruits">Fruits</option>
           <option value="snacks">Snacks</option>
@@ -183,6 +185,7 @@ td, th {
           <option value="bread/grains">Bread/Grains</option>
           <option value="dairy">Dairy</option>
           <option value="home">For the Home</option>
+          <option value="home">Toiletries</option>
 </div>
 </tr></table>
 <button class="btn btn-success">
@@ -276,7 +279,7 @@ td, th {
 
         <td>
           <img src="https://robohash.org/<%=an_item.name%>" class="robo-image">
-           
+          
         </td>
 
         <td>

@@ -5,6 +5,94 @@
     integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <style>
+    div {
+  padding-top: 20px;
+  
+}
+#name_box {
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  padding: 3px;
+  font-size: 16px;
+  width: 300px; /* reduced width from 210px */
+  margin-right: 10px; /* added margin to reduce distance between label and input */
+  margin-bottom: 5px; /* updated margin-bottom to reduce gap */
+}
+
+}
+    body{background-color:rgba(144, 225, 140, 0.409);}
+    .btn-group a {
+  text-decoration: none
+  font: 20px;
+  
+  }
+
+
+
+.form-row button {
+  margin-top: 10px; /* added margin to separate button from input */
+}
+
+
+.btn-group button {
+  margin: 10px;
+  
+  padding: 3rem;
+  font-size: 3rem;
+  font-weight: bold;
+  display: block;
+  display: flex;
+  justify-content: center;
+  width: 50%; 
+  margin: 0 auto;}
+
+.search-container {
+  text-align: center;}
+
+.search-label {
+  font-weight: bold;
+  display: block;
+  margin-bottom: 10px;}
+
+.abc {
+  text-align: center;
+  margin-top: 20px;
+  font:bold;
+
+}
+h1 {
+  font-family: "Montserrat", sans-serif;
+  font-size: 36px;
+  font-weight: 700;
+  color:purple;
+
+}
+.search-description {
+  font-size: 20px;
+  color:green;
+}
+.search-container {
+  display: flex;
+  justify-content: center;
+}
+
+.search-container button {
+  margin: 10px;
+  font-size: 18px;
+  padding: 10px 20px;
+}
+
+
+button {
+  width: 150px;
+  height: 50px;
+  display: block;
+  margin-bottom: 10px;
+  display: block;
+ 
+  margin: 10px auto;
+}
+
 
 body{background-color:rgba(144, 225, 140, 0.409);}
     /* Email styles need to be inline */
@@ -18,9 +106,9 @@ body{background-color:rgba(144, 225, 140, 0.409);}
     <div class="container"  margin-left: 120px>
     <a  class="navbar-brand" class="navbar-nav" href="/">Home</a>
     <a  class="navbar-brand" class="navbar-nav" href="/insert_item">Add Items</a>
-    <a  class="navbar-brand" class="navbar-nav" href="/search">Search Items</a>
-    <a  class="navbar-brand" class="navbar-nav" href="/find_item">Find Items </a>
-    <a  class="navbar-brand" class="navbar-nav" href="/itemlist">Search Item By Item name</a>
+    
+    <a  class="navbar-brand" class="navbar-nav" href="/All_items">All Items </a>
+    <a  class="navbar-brand" class="navbar-nav" href="/find_item">Search Item By Item name</a>
     <a  class="navbar-brand" class="navbar-nav" href="/categories_item">Search Item By Categories</a>
     <a  class="navbar-brand" class="navbar-nav" href="/"> Search Item By Location</a>
     
@@ -28,25 +116,41 @@ body{background-color:rgba(144, 225, 140, 0.409);}
     </div>
   </nav>
 
+</div>
 
-
-<div  style="margin-left: 120px;">
-    <h2>
+<div  style="margin-left: 40px;">
+    <!--h2>
       Find  item from  grocery list
-    </h2>
-     <h3>
+    </h2-->
+    <div style="font-style: italic;text-align: center;" >
+     <h2>
       Search Item by  Name
-    </h3>
-    <form action="/find_item" method="post">
-      <div>
-        <label for="name_box">
-           Item Name
-        </label>
+    </h2>
 
+    </div>
+    <div><h4>Instruction: If you wish to search for multiple items, please enter their names separated by commas in the input field.</h4>
+    </div>
+    <table>
+    <div class="row">
+    <div class="col-2">
+        <form action="/find_item" method="post">
+        
+            <div style="margin-top: auto; margin-bottom: 10px;">
+                <label for="name_box" style="font-size: 20px; color: #333333; text-align: center;">
+                    Item Name
+                </label>
+            </div>
+        
+    </div>
+</div>
+
+</tr><tr>
         <input type="text" id="name_box" name="query_name">
+        </tr>
       </div>
 
-      <div>
-        <button>
+      <div style="font: 20px;">
+        <button type="submit" class="btn btn-primary btn-sm" style="width: 100px;">
           Submit
         </button>
+</form>

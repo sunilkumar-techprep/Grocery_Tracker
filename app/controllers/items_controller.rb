@@ -52,7 +52,7 @@ class ItemsController < ApplicationController
     the_item.image = params.fetch("query_image")
     the_item.location = params.fetch("query_location")
     the_item.category = params.fetch("query_category")
-
+    #@user.image = params.fetch(:image)
     if the_item.valid?
       the_item.save
       redirect_to("/items", { :notice => "Item created successfully." })
@@ -141,29 +141,31 @@ end
 #def find_item
   #input_string = params.fetch("query_name").downcase
   #input_array = input_string.split(",").map { |s| s.gsub(/[^a-zA-Z\s]/, "").gsub(/\s+/, "") }
+  #input_array = input_string.split(",").map { |s| s.strip.gsub(/[^a-zA-Z\s]/, "").gsub(/\s+/, "") }
+
   #matching_items = Item.all
 
   #input_array.each do |word|
     #matching_items = matching_items.where("LOWER(name) LIKE ?", "%#{word}%")
+    #matching_items = matching_items.where("LOWER(name) ILIKE ?", "%#{word}%")
   #end
-
- # @list_of_items = matching_items
- # render({ :template => "items/finditem.html.erb" })
+  #@list_of_items = matching_items
+  #render({ :template => "items/finditem.html.erb" })
 #end
+
 def find_item
-  input_string = params.fetch("query_name").downcase
-  #input_array = input_string.split(",").map { |s| s.strip }
-  input_array = input_string.split(",").map { |s| s.gsub(/[^a-zA-Z\s]/, "").strip }
+  input_string = params.fetch("query_name").gsub(/\d/, "").split(",").map(&:strip).map(&:downcase)
 
-  # build the SQL LIKE condition using OR
-  conditions = input_array.map { |input| "LOWER(name) LIKE ?" }
-  sql_condition = conditions.join(" OR ")
-  sql_params = input_array.map { |input| "%#{input}%" }
+  matching_items = []
+  input_string.each do |word|
+    matching_items.concat(Item.where("LOWER(name) LIKE ?", "%#{word}%"))
+  end
 
-  matching_items = Item.where(sql_condition, *sql_params)
   @list_of_items = matching_items
   render({ :template => "items/finditem.html.erb" })
 end
+
+
 
 def allitems
   matching_items = Item.all
@@ -172,6 +174,46 @@ def allitems
 
   
    render({ :template => "items/allitem.html.erb" })
+end
+def category_item
+  input_name = params.fetch("query_name").gsub(/\d/, "").strip.downcase
+  input_category = params.fetch("query_category").strip
+  
+  matching_items = Item.where("LOWER(name) LIKE ?", "%#{input_name}%")
+                        .where("category = ?", input_category)
+  @list_of_items = matching_items
+  if @list_of_items.empty?
+    render({ template: "items/no_items_in_category.html.erb" })
+  else
+  
+  render({ :template => "items/finditem.html.erb" })
+end
+ 
+end
+def search_item
+  input_string = params.fetch("query_name").gsub(/\d/, "").split(",").map(&:strip).map(&:downcase)
+
+  matching_items = []
+  input_string.each do |word|
+    matching_items.concat(Item.where("LOWER(name) LIKE ?", "%#{word}%"))
+  end
+
+  @list_of_items = matching_items
+  @non_matching_items = input_string - matching_items.pluck(:name) 
+  render({ :template => "items/items.html.erb" })
+
+end
+def items 
+  input_string = params.fetch("query_name").gsub(/\d/, "").split(",").map(&:strip).map(&:downcase)
+
+  matching_items = []
+  input_string.each do |word|
+    matching_items.concat(Item.where("LOWER(name) LIKE ?", "%#{word}%"))
+  end
+
+  @list_of_items = matching_items
+  render({ :template => "items/display.html.erb" })
+
 end
 
 end

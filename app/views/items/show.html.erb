@@ -227,7 +227,7 @@ td, th {
     </td>
 
     <td>
-      <img src ="https://robohash.org/<%= @the_item.image %>" class="robo-image">
+      <img src ="<%= @the_item.image %>" class="robo-image">
     </td>
 
     <td>
@@ -248,16 +248,32 @@ td, th {
 
     <td>
 
-   <% @diff =(@the_item.expiration_date - @the_item.purchase_date).to_i%>
-    <% if @diff < 7 %>
-     <div id="fresh-until" style="color: red;">
+   <% @diff = (@the_item.expiration_date - Date.today ).to_i %>
+
+<!--% @diff = (@the_item.expiration_date - @the_item.purchase_date).to_i %-->
+<% if @diff < 0 %>
+  <div id="fresh-until" style="color: red;">
+    <%= @the_item.name %> expired before <%= @diff.abs %> day
+  </div>
+<% elsif @diff == 0 %>
+  <div id="fresh-until" style="color: red;">
+    <%= @the_item.name %> expired tomorrow
+  </div>
+<% elsif @diff <= 7 %>
+  <div id="fresh-until" style="color: purple;">
     Fresh until <%= @diff %> days
-     </div>
-    <% else %>
-     <div id="fresh-until" style="color: black;">
+  </div>
+<% elsif @diff > 7 %>
+  <div id="fresh-until" style="color: green;">
     Fresh until <%= @diff %> days
-     </div>
-    <% end %>
+  </div>
+<% end %>
+
+
+
+
+
+
      <!--td>
       <a href="/items/<%= @the_item.id %>">
         Show details
