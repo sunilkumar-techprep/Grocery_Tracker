@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <style>
+
+    .notice {
+  font-size: 20px;
+  color: green;
+  margin-left: 100px;
+}
+
+.alert {
+  font-size: 20px;
+  color: red;
+  margin-left: 100px;
+}
+
+body{
+    /*background-color:rgba(144, 225, 140, 0.409);*/
+    background-color:rgba(144, 225, 140, 0.28);
+    }
+
+    .row {
+    display: flex;
+    
+  
+    }
+
+     .form-group {
+    margin-bottom: 5px;
+  }
+  label{font-weight: bold;}
+    
+     h1{
+      text-align: center;
+      font-style: italic;
+      font-weight: bold;
+      color: purple;
+      font-size: 30px;
+    }
+    h1:hover {
+  font-style: normal;
+  color: blue;
+  cursor: pointer;
+}
+
+    .robo-image {
+    max-width: 100%;
+    height: auto;
+  }
+ #fresh-until {
+  font-weight: bold;
+}
+ 
+
+ .container {
+  margin-left: 40px;
+ }
+
+table {
+  width: 90%; 
+  margin: 20px auto; /* center the table horizontally and add 20px margin at the top and bottom */
+}
+nav {
+  margin-bottom: 20px;
+}
+
+table {
+  
+  width: 95%;
+  margin:20px auto;
+  margin-top: 40px; /* add 40px space between the navbar and the table */
+  
+}
+td{
+border: 3px solid #ccc;
+  padding: 10px;
+  text-align: center;
+  font-size: 20px;
+  color:purple;
+
+  }
+
+
+
+  th {
+  border: 3px solid #ccc;
+  padding: 10px;
+  text-align: center;
+  font-size: 20px;
+  color: black;
+  
+  font-weight: normal;
+
+}    
+</style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/js/all.min.js"></script>
+  </head>
+<body>
+
+<nav class="navbar navbar-dark bg-primary">
+    <div class="container"  margin-left: 120px>
+    <a  class="navbar-brand" class="navbar-nav" href="/">Home</a>
+    <a  class="navbar-brand" class="navbar-nav" href="/items">Add Items</a>
+    <!--a  class="navbar-brand" class="navbar-nav" href="/search">Search Items</a-->
+    <a  class="navbar-brand" class="navbar-nav" href="/All_items">All Items </a>
+    <a  class="navbar-brand" class="navbar-nav" href="/itemlist">Search Item By Item name</a>
+    <a  class="navbar-brand" class="navbar-nav" href="/search_category_item">Search Item By Category</a>
+    <a  class="navbar-brand" class="navbar-nav" href="/search_location"> Search Item By Location</a>
+    </div>
+    </div>
+  </nav>
+<!--div class="container">
+  <div>
+    
+  </div>
+</div-->
+
+<!----hr-->
+<div class="container">
+  <h2 style="font-size: 25px; color: #8B008B;">Add a new item to list</h2>
+<!--form action="/insert_item" method="post"-->
+  <form action="/insert_item" method="post" class="form-horizontal" enctype="multipart/form-data">
+    <table>
+  <tr>
+     <div class="form-group row form-inline">
+     <div class="row">
+     <div class="col-md-6">
+    
+        <label for="name_box" class="col-sm-3 col-form-label" style="font-size: 20px; color: #8B008B;">Name</label>
+      <div class="col-sm-6">
+      
+        <input type="text" id="name_box" name="query_name" class="form-control"placeholder="Enter Item Name" style="margin-top: 5px;" >
+      </div>
+    </div>
+</tr>
+
+<tr>
+     <div class="form-group row form-inline">
+     <div class="row">
+       <div class="col-md-6">
+        <label for="purchase_date_box" class="col-sm-3 col-form-label" style="font-size: 20px; color: #8B008B;;">Purchase date</label>
+      <div class="col-sm-6">
+     
+        <input type="date" id="purchase_date_box" name="query_purchase_date" class="form-control" style="margin-top: 5px;">
+      </div>
+      </tr>
+   
+<tr> <div class="form-group row form-inline">
+     <div class="row">
+  <div class="col-md-6">
+    
+        <label for="expiration_date_box"class="col-sm-3 col-form-label" style="font-size: 20px; color: #8B008B;;">Expiration date</label>
+      <div class="col-sm-6">
+      
+        <input type="date" id="expiration_date_box" class="form-control" name="query_expiration_date" style="margin-top: 5px;">
+      </div>
+    </tr>
+<tr><div class="form-group row form-inline">
+    <div class="row">
+  <div class="col-md-6">
+    
+        <label for="quantity_box"class="col-sm-3 col-form-label"style="font-size: 20px; color: #8B008B;;" >Quantity</label>
+      <div class="col-sm-6">
+      
+        <input type="text" id="quantity_box" name="query_quantity" class="form-control" style="margin-top: 5px;"placeholder="Enter Item Quantity ">
+      </div>
+    </tr>
+<tr><div class="form-group row form-inline">
+     <div class="row">
+  <div class="col-md-6">
+    
+        <label for="description_box" class="col-sm-3 col-form-label" style="font-size: 20px; color: #8B008B;;">Description</label>
+     
+      <div class="col-sm-6">
+        <textarea id="description_box" name="query_description" rows="3" class="form-control" style="margin-top: 5px;"placeholder="Enter Description"></textarea>
+      </div>
+    </tr>
+<!--tr><div class="form-group row form-inline">
+     <div class="row">
+  <div class="col-md-6">
+    
+        <label for="image_box" class="col-sm-3 col-form-label">Image</label>
+      <div class="col-sm-6"-->
+      <!--no open input type="file" id="image" name="image" class="form-control"-->
+      <!--input type="file" id="image_box" name="image" class="form-control"style="margin-top: 5px;">
+      
+        <input type="text" id="image_box" name="query_image" class="form-control" style="margin-top: 5px;">
+      </div>
+    </tr-->
+<tr><div class="form-group row form-inline">
+    <div class="row">
+  <div class="col-md-6">
+    
+        <!--label for="location_box" class="col-sm-3 col-form-label" style="font-size: 20px; color: #8B008B;"placeholder="Enter Description">Location</label-->
+        <label for="location_box" class="col-sm-3 col-form-label" style="font-size: 20px; color: #8B008B;">Location</label>
+
+      <div class="col-sm-6">
+      
+        <input type="text" id="location_box" name="query_location"class="form-control" style="margin-top: 5px;"placeholder="Enter Location" >
+      </div>
+    </tr>
+<tr><div class="form-group row form-inline">
+    <div class="row">
+  <div class="col-md-6">
+    
+        <!--label for="query_category" class="col-sm-3 col-form-label" style="font-size: 20px; color: #9932CC;">Select a Category:</label-->
+      <label for="query_category"  style="font-size: 20px; color: #8B008B;;margin-bottom: 10px;">Select Category:</label>
+      
+
+      <div class="col-sm-6"">
+        <select name="query_category" id="query_category"class="form-control" >
+        <option value="" disabled selected>Select category</option>
+          <option value="produce">Produce</option>
+          <option value="frozen">Frozen</option>
+          <option value="beverages">Drinks</option>
+          <option value="condiments">Condiments</option>
+          <option value="fruits">Fruits</option>
+          <option value="snacks">Snacks</option>
+          <option value="backing/spices">Baking/Spices</option>
+          <option value="bread/grains">Bread/Grains</option>
+          <option value="dairy">Dairy</option>
+          <option value="home">For the Home</option>
+          <option value="home">Toiletries</option>
+</div>
+</tr></table>
+<!--button class="btn btn-success">
+        Create item
+      </button>
+    </form>
+    <%= notice %>
+    <%= alert %>
+  </div>
+</div-->
+<div class="row">
+  <div class="col-md-6">
+    <form>
+      <button class="btn btn-success">Create item</button>
+      <span class="notice"><%= notice %></span>
+      <span class="alert"><%= alert %></span>
+    </form>
+  </div>
+</div>
+
+  
+<hr>
+       <h1>
+      List of all available items at home
+        </h1>
+<div>
+  <div>
+    <table border="1">
+      <tr>
+        <th>
+          ID
+        </th>
+
+        <th>
+          Name
+        </th>
+
+        <th>
+          Purchase date
+        </th>
+
+        <th>
+          Expiration date
+        </th>
+
+        <th>
+          Quantity
+        </th>
+
+        <th>
+          Description
+        </th>
+
+        <!--th>
+          Image
+        </th-->
+
+        <th>
+          Location
+        </th>
+
+        <th>
+          Category
+        </th>
+
+        <th>
+          Created at
+        </th>
+
+        <th>
+          Updated at
+        </th>
+
+        <th>Details
+        </th>
+      </tr>
+
+      <% @list_of_items.each do |an_item| %>
+      <tr>
+        <td>
+          <%= an_item.id %>
+        </td>
+
+        <td>
+          <%= an_item.name %>
+        </td>
+
+        <td>
+          <%= an_item.purchase_date %>
+        </td>
+
+        <td>
+          <%= an_item.expiration_date %>
+        </td>
+
+        <td>
+          <%= an_item.quantity %>
+        </td>
+
+        <td>
+          <%= an_item.description %>
+        </td>
+
+        <!--td-->
+        <!--img src="https://robohash.org/<%=an_item.name%>" class="robo-image"-->
+        
+          
+          
+        <!--/td-->
+
+        <td>
+          <%= an_item.location %>
+        </td>
+
+        <td>
+          <%= an_item.category %>
+        </td>
+
+        <td>
+          <%= time_ago_in_words(an_item.created_at) %> ago
+        </td>
+        <td>
+          <%= time_ago_in_words(an_item.updated_at) %> ago
+        </td>
+
+        <td>
+          <a href="/items/<%= an_item.id %>">
+            Show details
+          </a>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
+
+<hr>
+
+
+
+
+
+<!--div class="container">
+
+
+    <h2>
+      Add a new item to grocery list
+    </h2>
+
+    <form action="/insert_item" method="post">
+      <div>
+        <label for="name_box">
+          Name
+        </label>
+
+        <input type="text" id="name_box" name="query_name">
+      </div>
+
+      <div>
+        <label for="purchase_date_box">
+          Purchase date
+        </label>
+
+        <input type="date" id="purchase_date_box" name="query_purchase_date">
+      </div>
+
+      <div>
+      
+
+        <label for="expiration_date_box">
+          Expiration date
+        </label>
+
+        <input type="date" id="expiration_date_box" name="query_expiration_date">
+      </div>
+
+      <div>
+        <label for="quantity_box">
+          Quantity
+        </label>
+
+        <input type="text" id="quantity_box" name="query_quantity">
+      </div>
+
+      <div>
+        <label for="description_box">
+          Description
+        </label>
+
+        <textarea id="description_box" name="query_description" rows="3"></textarea>
+      </div>
+
+      <div>
+        <label for="image_box">
+          Image
+        </label>
+
+        <input type="text" id="image_box" name="query_image">
+      </div>
+
+      <div>
+        <label for="location_box">
+          Location
+        </label>
+
+        <input type="text" id="location_box" name="query_location">
+      </div>
+
+      <div>
+        <label for="category_id_box">
+          Category
+        </label>
+
+        <input type="text" id="category_id_box" name="query_category">
+        <label for="query_category">Choose a Category:</label>
+<select name="query_category" id="query_category">
+  <option value="produce">Produce</option>
+  <option value="frozen">Frozen</option>
+  <option value="beverages" selected>Drinks</option>
+  <option value="condiments">Condiments</option>
+  <option value="fruits">Fruits</option>
+  <option value="snacks">Snacks</option>
+  <option value="backing/spices" >Baking/Spices</option>
+  <option value="bread/grains">Bread/Grains</option>
+  <option value="dairy">Dairy</option>
+  <option value="home">For the Home</option>
+  <option value="toiletries">Toiletries</option>
+</select>
+      </div>
+
+      <button class="btn btn-success">
+        Create item
+      </button>
+    </form>
+  </div>
+</div--->
