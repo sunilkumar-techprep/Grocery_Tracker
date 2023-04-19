@@ -49,15 +49,17 @@ class ItemsController < ApplicationController
     the_item.expiration_date = params.fetch("query_expiration_date")
     the_item.quantity = params.fetch("query_quantity")
     the_item.description = params.fetch("query_description")
-    the_item.image = params.fetch("query_image")
+  #the_item.image = params.fetch("query_image")
     the_item.location = params.fetch("query_location")
     the_item.category = params.fetch("query_category")
     #@user.image = params.fetch(:image)
     if the_item.valid?
       the_item.save
-      redirect_to("/items", { :notice => "Item created successfully." })
+      redirect_to("/items", { :notice => "Item created successfully!" })
+    
     else
       redirect_to("/items", { :alert => the_item.errors.full_messages.to_sentence })
+      
     end
   end
 
@@ -70,10 +72,10 @@ class ItemsController < ApplicationController
     the_item.expiration_date = params.fetch("query_expiration_date")
     the_item.quantity = params.fetch("query_quantity")
     the_item.description = params.fetch("query_description")
-    the_item.image = params.fetch("query_image")
+    #the_item.image = params.fetch("query_image")
     the_item.location = params.fetch("query_location")
     the_item.category = params.fetch("query_category")
-
+    #@user.image = params.fetch(:image)
     if the_item.valid?
       the_item.save
       redirect_to("/items/#{the_item.id}", { :notice => "Item updated successfully."} )
@@ -215,5 +217,27 @@ def items
   render({ :template => "items/display.html.erb" })
 
 end
+
+
+ def item_by_location
+
+  render({ template: "items/item_by_location.html.erb" })
+ end
+ def search_item_location
+
+
+  input_name = params.fetch("query_name").gsub(/\d/, "").strip.downcase
+  @input_location = params.fetch("query_location").downcase.strip
+
+  input_names = input_name.split(",").map(&:strip)
+  matching_items = Item.where("LOWER(name) IN (?) AND LOWER(location) = ?", input_names, @input_location)
+
+  @list_of_items = matching_items
+  @non_matching_items = input_names - matching_items.pluck(:name) 
+
+  
+  render({ :template => "items/items.html.erb" })
+end
+
 
 end

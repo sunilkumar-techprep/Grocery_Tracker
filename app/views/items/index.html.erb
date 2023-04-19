@@ -6,6 +6,22 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <style>
 
+    .notice {
+  font-size: 20px;
+  color: green;
+  margin-left: 100px;
+}
+
+.alert {
+  font-size: 20px;
+  color: red;
+  margin-left: 100px;
+}
+
+body{
+    /*background-color:rgba(144, 225, 140, 0.409);*/
+    background-color:rgba(144, 225, 140, 0.28);
+    }
 
     .row {
     display: flex;
@@ -16,8 +32,9 @@
      .form-group {
     margin-bottom: 5px;
   }
+  label{font-weight: bold;}
     
-     h1 {
+     h1{
       text-align: center;
       font-style: italic;
       font-weight: bold;
@@ -40,7 +57,7 @@
  
 
  .container {
-  margin-left: 30px;
+  margin-left: 40px;
  }
 
 table {
@@ -52,16 +69,32 @@ nav {
 }
 
 table {
+  
   width: 95%;
   margin:20px auto;
   margin-top: 40px; /* add 40px space between the navbar and the table */
   
 }
+td{
+border: 3px solid #ccc;
+  padding: 10px;
+  text-align: center;
+  font-size: 20px;
+  color:purple;
 
-td, th {
+  }
+
+
+
+  th {
   border: 3px solid #ccc;
   padding: 10px;
   text-align: center;
+  font-size: 20px;
+  color: black;
+  
+  font-weight: normal;
+
 }    
 </style>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/js/all.min.js"></script>
@@ -73,10 +106,10 @@ td, th {
     <a  class="navbar-brand" class="navbar-nav" href="/">Home</a>
     <a  class="navbar-brand" class="navbar-nav" href="/items">Add Items</a>
     <!--a  class="navbar-brand" class="navbar-nav" href="/search">Search Items</a-->
-    <a  class="navbar-brand" class="navbar-nav" href="/itemlist">Find Items </a>
+    <a  class="navbar-brand" class="navbar-nav" href="/All_items">All Items </a>
     <a  class="navbar-brand" class="navbar-nav" href="/itemlist">Search Item By Item name</a>
-    <a  class="navbar-brand" class="navbar-nav" href="/categories_item">Search Item By Categories</a>
-    <a  class="navbar-brand" class="navbar-nav" href="/"> Search Item By Location</a>
+    <a  class="navbar-brand" class="navbar-nav" href="/search_category_item">Search Item By Category</a>
+    <a  class="navbar-brand" class="navbar-nav" href="/search_location"> Search Item By Location</a>
     </div>
     </div>
   </nav>
@@ -86,29 +119,30 @@ td, th {
   </div>
 </div-->
 
-<hr>
+<!----hr-->
 <div class="container">
-  <h2>Add a new item to grocery list</h2>
-<form action="/insert_item" method="post">
-  <!--form action="/insert_item" method="post" class="form-horizontal" enctype="multipart/form-data"-->
+  <h2 style="font-size: 25px; color: #8B008B;">Add a new item to list</h2>
+<!--form action="/insert_item" method="post"-->
+  <form action="/insert_item" method="post" class="form-horizontal" enctype="multipart/form-data">
     <table>
   <tr>
      <div class="form-group row form-inline">
      <div class="row">
      <div class="col-md-6">
     
-        <label for="name_box" class="col-sm-3 col-form-label">Name</label>
+        <label for="name_box" class="col-sm-3 col-form-label" style="font-size: 20px; color: #8B008B;">Name</label>
       <div class="col-sm-6">
       
         <input type="text" id="name_box" name="query_name" class="form-control"placeholder="Enter Item Name" style="margin-top: 5px;" >
       </div>
     </div>
 </tr>
+
 <tr>
      <div class="form-group row form-inline">
      <div class="row">
        <div class="col-md-6">
-        <label for="purchase_date_box" class="col-sm-3 col-form-label">Purchase date</label>
+        <label for="purchase_date_box" class="col-sm-3 col-form-label" style="font-size: 20px; color: #8B008B;;">Purchase date</label>
       <div class="col-sm-6">
      
         <input type="date" id="purchase_date_box" name="query_purchase_date" class="form-control" style="margin-top: 5px;">
@@ -119,7 +153,7 @@ td, th {
      <div class="row">
   <div class="col-md-6">
     
-        <label for="expiration_date_box"class="col-sm-3 col-form-label">Expiration date</label>
+        <label for="expiration_date_box"class="col-sm-3 col-form-label" style="font-size: 20px; color: #8B008B;;">Expiration date</label>
       <div class="col-sm-6">
       
         <input type="date" id="expiration_date_box" class="form-control" name="query_expiration_date" style="margin-top: 5px;">
@@ -129,52 +163,57 @@ td, th {
     <div class="row">
   <div class="col-md-6">
     
-        <label for="quantity_box"class="col-sm-3 col-form-label" >Quantity</label>
+        <label for="quantity_box"class="col-sm-3 col-form-label"style="font-size: 20px; color: #8B008B;;" >Quantity</label>
       <div class="col-sm-6">
       
-        <input type="text" id="quantity_box" name="query_quantity" class="form-control" style="margin-top: 5px;">
+        <input type="text" id="quantity_box" name="query_quantity" class="form-control" style="margin-top: 5px;"placeholder="Enter Item Quantity ">
       </div>
     </tr>
 <tr><div class="form-group row form-inline">
      <div class="row">
   <div class="col-md-6">
     
-        <label for="description_box" class="col-sm-3 col-form-label">Description</label>
+        <label for="description_box" class="col-sm-3 col-form-label" style="font-size: 20px; color: #8B008B;;">Description</label>
      
       <div class="col-sm-6">
-        <textarea id="description_box" name="query_description" rows="3" class="form-control" style="margin-top: 5px;"></textarea>
+        <textarea id="description_box" name="query_description" rows="3" class="form-control" style="margin-top: 5px;"placeholder="Enter Description"></textarea>
       </div>
     </tr>
-<tr><div class="form-group row form-inline">
+<!--tr><div class="form-group row form-inline">
      <div class="row">
   <div class="col-md-6">
     
         <label for="image_box" class="col-sm-3 col-form-label">Image</label>
-      <div class="col-sm-6">
-      <!--input type="file" id="image" name="image" class="form-control"-->
-      <!--input type="file" id="image_box" name="image" class="form-control"-->
+      <div class="col-sm-6"-->
+      <!--no open input type="file" id="image" name="image" class="form-control"-->
+      <!--input type="file" id="image_box" name="image" class="form-control"style="margin-top: 5px;">
       
         <input type="text" id="image_box" name="query_image" class="form-control" style="margin-top: 5px;">
       </div>
-    </tr>
+    </tr-->
 <tr><div class="form-group row form-inline">
     <div class="row">
   <div class="col-md-6">
     
-        <label for="location_box" class="col-sm-3 col-form-label">Location</label>
+        <!--label for="location_box" class="col-sm-3 col-form-label" style="font-size: 20px; color: #8B008B;"placeholder="Enter Description">Location</label-->
+        <label for="location_box" class="col-sm-3 col-form-label" style="font-size: 20px; color: #8B008B;">Location</label>
+
       <div class="col-sm-6">
       
-        <input type="text" id="location_box" name="query_location"class="form-control" style="margin-top: 5px;" >
+        <input type="text" id="location_box" name="query_location"class="form-control" style="margin-top: 5px;"placeholder="Enter Location" >
       </div>
     </tr>
 <tr><div class="form-group row form-inline">
     <div class="row">
   <div class="col-md-6">
     
-        <label for="query_category" class="col-sm-3 col-form-label">Choose a Category:</label>
+        <!--label for="query_category" class="col-sm-3 col-form-label" style="font-size: 20px; color: #9932CC;">Select a Category:</label-->
+      <label for="query_category"  style="font-size: 20px; color: #8B008B;;margin-bottom: 10px;">Select Category:</label>
       
+
       <div class="col-sm-6"">
         <select name="query_category" id="query_category"class="form-control" >
+        <option value="" disabled selected>Select category</option>
           <option value="produce">Produce</option>
           <option value="frozen">Frozen</option>
           <option value="beverages">Drinks</option>
@@ -188,16 +227,28 @@ td, th {
           <option value="home">Toiletries</option>
 </div>
 </tr></table>
-<button class="btn btn-success">
+<!--button class="btn btn-success">
         Create item
       </button>
     </form>
+    <%= notice %>
+    <%= alert %>
+  </div>
+</div-->
+<div class="row">
+  <div class="col-md-6">
+    <form>
+      <button class="btn btn-success">Create item</button>
+      <span class="notice"><%= notice %></span>
+      <span class="alert"><%= alert %></span>
+    </form>
   </div>
 </div>
+
   
 <hr>
        <h1>
-      List of all avilable items at home
+      List of all available items at home
         </h1>
 <div>
   <div>
@@ -227,9 +278,9 @@ td, th {
           Description
         </th>
 
-        <th>
+        <!--th>
           Image
-        </th>
+        </th-->
 
         <th>
           Location
@@ -277,10 +328,12 @@ td, th {
           <%= an_item.description %>
         </td>
 
-        <td>
-          <img src="https://robohash.org/<%=an_item.name%>" class="robo-image">
+        <!--td-->
+        <!--img src="https://robohash.org/<%=an_item.name%>" class="robo-image"-->
+        
           
-        </td>
+          
+        <!--/td-->
 
         <td>
           <%= an_item.location %>
@@ -315,6 +368,8 @@ td, th {
 
 
 <!--div class="container">
+
+
     <h2>
       Add a new item to grocery list
     </h2>
@@ -337,6 +392,8 @@ td, th {
       </div>
 
       <div>
+      
+
         <label for="expiration_date_box">
           Expiration date
         </label>

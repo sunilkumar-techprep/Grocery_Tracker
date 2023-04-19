@@ -5,7 +5,10 @@
     integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <style>
-
+body{
+    /*background-color:rgba(144, 225, 140, 0.409);*/
+    background-color:rgba(144, 225, 140, 0.28);
+    }
     .container {
     margin-left: 20px; /* set left margin */
   }
@@ -64,7 +67,7 @@ h1 {
   font-weight: 700;
   color:purple;
   text-align: center;
-  margin-top: 10px;
+  margin-top: 25px;
 
 }
 .search-description {
@@ -74,6 +77,7 @@ h1 {
 .search-container {
   display: flex;
   justify-content: center;
+  margin-left: 20px;
 }
 
 .search-container button {
@@ -89,8 +93,8 @@ button {
   display: block;
   margin-bottom: 10px;
   display: block;
- 
-  margin: 10px auto;
+ margin: 10px auto;
+  
 }
 table {
   width: 95%;
@@ -99,10 +103,12 @@ table {
   
 }
 
+
 td, th {
   border: 3px solid #ccc;
   padding: 10px;
   text-align: center;
+  font-size: 20px;
 }  
 .robo-image {
     max-width: 50%;
@@ -129,7 +135,7 @@ td, th {
 <div>
   <div>
     <h1>
-      Item <% @the_item.name %> details
+     <%= @the_item.name.capitalize %> Details
     </h1>
 
     <!--div>
@@ -173,9 +179,9 @@ td, th {
           Description
         </th>
 
-        <th>
+        <!--th>
           Image
-        </th>
+        </th-->
 
         <th>
           Location
@@ -226,9 +232,9 @@ td, th {
       <%= @the_item.description %>
     </td>
 
-    <td>
+    <!--td>
       <img src ="<%= @the_item.image %>" class="robo-image">
-    </td>
+    </td-->
 
     <td>
       <%= @the_item.location %>
@@ -353,12 +359,12 @@ td, th {
       </div>
 </tr>
 <tr>
-      <div class="form-group row form-inline" >
+      <!--div class="form-group row form-inline" >
         <label for="image_box" class="col-sm-3 col-form-label">Image</label>
       <div class="col-sm-6">
      <input type="text" class="form-control" id="image_box" name="query_image" value="<%= @the_item.image %>"style="margin-top: 5px;"placeholder="Enter Image URL">
       </div>
-</tr>
+</tr-->
 <tr>
       <div class="form-group row form-inline">
         <label for="location_box"class="col-sm-3 col-form-label" >Location</label>
@@ -373,7 +379,8 @@ td, th {
          <select name="query_category" id="query_category" class="form-control" >
   <option value="produce">Produce</option>
   <option value="frozen">Frozen</option>
-  <option value="beverages" selected ="<%= @the_item.category %>">Drinks</option>
+  
+  <option value="beverages">Drinks</option>
   <option value="condiments">Condiments</option>
   <option value="fruits">Fruits</option>
   <option value="snacks">Snacks</option>
@@ -485,6 +492,7 @@ td, th {
 <input type="text"  class="form-control" id="category_id_box" name="query_category" value="<%= @the_item.category%>"style="margin-top: 5px;"placeholder="Select Category of Item" >
         <input type="hidden" id="name_box" name="query_name" value="<%= @the_item.name %>">
       </div-->
+      <!--option value="beverages" selected ="<%= @the_item.category %>">Drinks</option-->
     <!--a href="/modify_item/<%= @the_item.id %>" style="text-decoration:none; color:inherit;"-->
 
   

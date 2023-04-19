@@ -5,18 +5,18 @@
     integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <style>
-    .containeer {
+    /*.containeer {
   display: flex;
   justify-content: center;
   align-items: flex-end; /* Use align-items: flex-end to align at the bottom */
-  height: 20vh; /* Adjust to desired height */
-}
+  /*height: 20vh;} /* Adjust to desired height */
 
-.banner-image {
-  max-width: 100%; /* Adjust to desired width */
-  max-height: 25vh; /* Adjust to desired height */
-  border-radius: 40%; /* Set the border radius to make it round */
-  border: 2px solid white; /* Set the border color and width */
+
+/*.banner-image {
+  max-width: 100%; /* Adjust to desired width 
+  max-height: 25vh; /* Adjust to desired height 
+  border-radius: 40%; /* Set the border radius to make it round 
+  border: 2px solid white; /* Set the border color and width 
 }
      /* Set the container for the image */
        /*.containeer {
@@ -31,10 +31,39 @@
             border-radius: 40%;  Set the border radius to make it round 
             /*border: 2px solid #000;
             border: 2px solid white;} 
-            /* Set the border color and width */
+            /* Set the border color and width 
         
    
-    body{background-color:rgba(144, 225, 140, 0.409);}
+    body{background-color:rgba(144, 225, 140, 0.409);}*/
+
+    
+body{
+    background-color:rgba(144, 225, 140, 0.28);
+  /*background-image: linear-gradient(-60deg, #007bff 50%, #09f 50%);
+
+  background-image: url('background.jpg'); /* Replace 'background.jpg' with your desired background image */
+  background-size: cover; /* Adjust to desired size */
+  background-repeat: no-repeat; /* Prevent background image from repeating */
+  background-position: center center; /* Center the background image */
+  background-attachment: fixed; /* Fix the background image to prevent scrolling */
+}
+
+.containeer {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end; /* Use align-items: flex-end to align at the bottom */
+  height: 20vh; /* Adjust to desired height */
+}
+
+.banner-image {
+  max-width: 100%; /* Adjust to desired width */
+  max-height: 25vh; /* Adjust to desired height */
+  border-radius: 40%; /* Set the border radius to make it round */
+  border: 2px solid white; /* Set the border color and width */
+}
+
+/* Rest of your CSS code */
+
     .btn-group a {
   text-decoration: none;
   font: 20px;}
@@ -125,7 +154,7 @@ button {
    
 
 .containerr {
-  margin-top: 20px;
+  margin-top:40px;
   margin-left: 20px;
    margin-right: 20px;
    margin-bottom: 20px; 
@@ -147,8 +176,9 @@ button {
   </head>
 
   <body>
-
-    <nav class="navbar navbar-dark bg-primary" style="height: 100px;">
+     
+    <!---nav class="navbar navbar-dark bg-primary" style="height: 100px;"--->
+    <nav class="navbar navbar-dark bg-primary">
     <div class="container"  style="margin-left: 120px;">
     <!--div class="container"-->
     
@@ -158,13 +188,13 @@ button {
     <a  class="navbar-brand" class="navbar-nav" href="/All_items">All Items </a>
     <!--a class="navbar-brand" class="navbar-nav" href="#"><img src="grocery.jpg" alt="App Logo" class="banner-image"--><!--/a-->
     <a  class="navbar-brand" class="navbar-nav" href="/itemlist">Search Item By Item name</a>
-    <a  class="navbar-brand" class="navbar-nav" href="/search_category_item">Search Item By Categories</a>
-    <a  class="navbar-brand" class="navbar-nav" href="/"> Search Item By Location</a>
+    <a  class="navbar-brand" class="navbar-nav" href="/search_category_item">Search Item By Category</a>
+    <a  class="navbar-brand" class="navbar-nav" href="/search_location"> Search Item By Location</a>
     </div>
     </div>
   </nav>
   <div class="containerr"><p class="content">
-Welcome to our HomeCheckTrackerApplication! With our user-friendly interface, you can easily keep track of all your household items in one place.
+Welcome to our Home Check Tracker Application! With our user-friendly interface, you can easily keep track of all your household items in one place.
 
  <!--You can easily input all the relevant information for each item, making it convenient for you to keep organized.
 
@@ -183,7 +213,7 @@ With our Home Items Management Application, you can efficiently manage all your 
 </div>
  <div class="abc">
     <h1><label for="abc">SEARCH ITEM</label></h1>
-    <p class="search-description"> for search available by item Name, categories or location click the button below</p>
+    <!--p class="search-description"> for search available by item Name, categories or location click the button below</p-->
   </div>
   <div class="search-container">
     
@@ -191,7 +221,8 @@ With our Home Items Management Application, you can efficiently manage all your 
   <a href="/itemlist"style="text-decoration:none; color: white;">Item Name</button>
  <button type="button" class="btn btn-primary ">
  <a href="/search_category_item"style="text-decoration:none; color: white;">Categories</button>
- <button type="button" class="btn btn-primary">Location</button>
+ 
+ <button type="button" class="btn btn-primary"><a href="/search_location"style="text-decoration:none; color: white;">Location</button>
  </a>
 </form>
 <hr>
@@ -200,6 +231,7 @@ With our Home Items Management Application, you can efficiently manage all your 
 <div class="logo">
 <img src="grocery.jpg" alt="grocery image" class="banner-image">
 </div>
+
 <!--Adding items is a breeze with fields for name, image, purchase date, expiration date, quantity, description, location, and category.-->
 <!--User can easily keep track of all  household items at one place.​
 

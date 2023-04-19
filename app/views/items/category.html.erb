@@ -17,20 +17,26 @@
   font-size: 16px;
   width: 210px;
   /* add any other custom styles here */
+  margin-right: 10px; /* added margin to reduce distance between label and input */
+  margin-bottom: 5px; /* updated margin-bottom to reduce gap */
 }
-    body{background-color:rgba(144, 225, 140, 0.409);}
+    body{background-color:rgba(144, 225, 140, 0.28);}
     .btn-group a {
   text-decoration: none
   font: 20px;
   
   }
+  .form-row button {
+  margin-top: 10px; /* added margin to separate button from input */
+}
+
 
 .btn-group button {
   margin: 10px;
   
   padding: 3rem;
   font-size: 3rem;
-  font-weight: bold;
+  /*font-weight: bold;*/
   display: block;
   display: flex;
   justify-content: center;
@@ -41,7 +47,7 @@
   text-align: center;}
 
 .search-label {
-  font-weight: bold;
+  /*font-weight: bold;*/
   display: block;
   margin-bottom: 10px;}
 
@@ -82,6 +88,11 @@ button {
   display: block;
  
   margin: 10px auto;
+}button[type="submit"] {
+  font-size: 25px;
+}
+#name_box:focus {
+  font-size: 30px;
 }
 
     </style>
@@ -97,26 +108,30 @@ button {
     
     <a  class="navbar-brand" class="navbar-nav" href="/All_items">All Items </a>
     <a  class="navbar-brand" class="navbar-nav" href="/itemlist">Search Item By Item name</a>
-    <a  class="navbar-brand" class="navbar-nav" href="/category_item">Search Item By Categories</a>
-    <a  class="navbar-brand" class="navbar-nav" href="/"> Search Item By Location</a>
+    <a  class="navbar-brand" class="navbar-nav" href="/search_category_item">Search Item By Category</a>
+    <a  class="navbar-brand" class="navbar-nav" href="/search_location"> Search Item By Location</a>
     </div>
     </div>
   </nav>
-<div>
+</div>
 
-  <div style="margin-left: 40px;" >
+  <div style="margin-left: 40px; font-style: italic;text-align: center; color:  #444444;" >
 
-  <h2>Search items by categories</h2>
-  <div><h4>Instruction: If you wish to search for multiple items, please enter their names separated by commas in the input field.</h4>
+  <h2 >Search Items by Category</h2>
+ 
+  <div style="color#444444;"><h4>Instruction: If you wish to search for multiple items, please enter their names separated by commas.</h4>
     </div>
-
+<table>
   <div class="row">
     <div class="col-2">
 <form action ="/category">
       <!--form action="/find_item" method="post"-->
       <!--form action ="/category_item"-->
-        <label for="query_category">Select Category:</label>
-        <select name="query_category" id="query_category" class="form-select">
+      <div style="margin-top: auto; margin-bottom: 15px;">
+        <label for="query_category"style="font-size: 20px;margin-bottom: 10px;color:  #444444;text-align: center;">Select Category</label>
+     
+        <select name="query_category" id="query_category" class="form-select"style="font-size: 20px;margin-bottom: 10px;"
+        >
           <option value="Produce">Produce</option>
           <option value="Frozen">Frozen</option>
           <option value="Drinks" >Drinks</option>
@@ -129,14 +144,25 @@ button {
           <option value="For the Home">For the Home</option>
           <option value="Toiletries">Toiletries</option>
         </select>
+       
+        
+    </div>
+
     <div class="row">
-    <div class="col-6">
-     Item Name
+    <!--div class="col-6"-->
     
+    <div  >
+    <!--h2 style="margin-bottom: 10px;"> Item Name</h2-->
+    <label for="name_box" style="font-size: 20px; color:  #444444;text-align: center;margin-bottom: 10px;">
+                    Item Name
+                </label>
     
-         <div>
-        <input type="text" id="name_box" name="query_name" class="form-control">
+        
+        <input type="text" id="name_box" name="query_name" class="form-control" 
+           style="font-size: 20px;margin-bottom: 10px;
+           "placeholder="Enter Item Name">
       </div>
+     
     <!--div class="col-6 d-flex justify-content-end align-items-center"--><!--it make button center-->
     <div>
       <button type="submit" class="btn btn-primary btn-sm" style="width: 100px;">Submit</button>

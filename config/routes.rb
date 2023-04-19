@@ -79,4 +79,10 @@ Rails.application.routes.draw do
 
   get("/item", { :controller => "items", :action => "item" })
   get("/search_category_item", { :controller => "categories", :action => "search_category_item" })
+  get("/search_location", { :controller => "items", :action => "item_by_location" })
+
+
+  post("/find_item_location",{:controller => "items", :action=>"search_item_location"})
+
+
 end

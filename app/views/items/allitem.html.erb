@@ -7,7 +7,10 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <style>
 
-
+body{
+    /*background-color:rgba(144, 225, 140, 0.409);*/
+    background-color:rgba(144, 225, 140, 0.28);
+    }
     .row {
     display: flex;
     
@@ -63,6 +66,7 @@ td, th {
   border: 3px solid #ccc;
   padding: 10px;
   text-align: center;
+  font-size: 20px;
 }    
 </style>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/js/all.min.js"></script>
@@ -74,10 +78,10 @@ td, th {
     <a  class="navbar-brand" class="navbar-nav" href="/">Home</a>
     <a  class="navbar-brand" class="navbar-nav" href="/items">Add Items</a>
     <!--a  class="navbar-brand" class="navbar-nav" href="/search">Search Items</a-->
-    <a  class="navbar-brand" class="navbar-nav" href="/itemlist">Find Items </a>
+    <a  class="navbar-brand" class="navbar-nav" href="/All_items">All Items </a>
     <a  class="navbar-brand" class="navbar-nav" href="/itemlist">Search Item By Item name</a>
-    <a  class="navbar-brand" class="navbar-nav" href="/categories_item">Search Item By Categories</a>
-    <a  class="navbar-brand" class="navbar-nav" href="/"> Search Item By Location</a>
+    <a  class="navbar-brand" class="navbar-nav" href="/search_category_item">Search Item By Category</a>
+    <a  class="navbar-brand" class="navbar-nav" href="/search_location"> Search Item By Location</a>
     </div>
     </div>
   </nav>
@@ -112,9 +116,9 @@ td, th {
           Description
         </th>
 
-        <th>
+        <!--th>
           Image
-        </th>
+        </th-->
 
         <th>
           Location
@@ -162,10 +166,10 @@ td, th {
           <%= an_item.description %>
         </td>
 
-        <td>
+        <!--td>
           <img src="https://robohash.org/<%=an_item.name%>" class="robo-image">
            
-        </td>
+        </td-->
 
         <td>
           <%= an_item.location %>
